@@ -1,14 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ChatPage from "./pages/chat";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          index
-          element={<h1 className="text-center font-bold">Template Example</h1>}
-        />
-        Í
+        <Route index element={<ChatPage />} />Í
       </Routes>
     </BrowserRouter>
   );

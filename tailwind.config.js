@@ -19,7 +19,13 @@ export default {
       // => @media (min-width: 1536px)
     },
     extend: {
-      colors: {},
+      colors: {
+        mainColor: "#182551",
+        secondColor: "#f5f7fc",
+        thirdColor: "#ED0266",
+        hoverBtn: "#942234",
+        chatAi: "#e2e8e9",
+      },
     },
   },
   plugins: [],
