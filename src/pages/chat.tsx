@@ -28,7 +28,7 @@ const ChatPage: React.FC = () => {
     setTimeout(() => {
       setMessages([
         {
-          text: "Halo, bagaimana kabar anda? Perkenalkan saya dari tim sales Telkomsel ingin memastikan apakah Distro Bamboo masih aktif menggunakan layanan Telkomsel?",
+          text: "Halo !",
           sender: "ai",
         },
       ]);
