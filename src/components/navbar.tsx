@@ -1,9 +1,9 @@
 import { FaCircle } from "react-icons/fa";
 const Navbar = () => {
   return (
-    <>
-      <nav className="bg-mainColor z-20 w-full rounded-bl-xl rounded-br-xl  shadow-md">
-        <div className="container mx-auto max-w-screen-xl items-center justify-between p-4">
+    <div className="bg-mainColor rounded-bl-xl rounded-br-xl  shadow-md">
+      <nav className="container mx-auto z-20 w-full">
+        <div className=" max-w-screen-xl items-center justify-between p-4">
           <div className="grid grid-cols-12">
             <div className="col-span-12  md:col-span-6 lg:col-span-6">
               <div className="flex items-center gap-2">
@@ -25,7 +25,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };
 

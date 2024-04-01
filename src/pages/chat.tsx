@@ -80,7 +80,7 @@ const ChatPage: React.FC = () => {
     <div className="flex h-screen flex-col bg-white">
       <Navbar />
       {context}
-      <div className="hide-scrollbar flex-grow space-y-2 overflow-y-auto p-4 ">
+      <div className="hide-scrollbar container mx-auto flex-grow space-y-2 overflow-y-auto p-4 ">
         {messages.map((message, index) =>
           message?.isLoading ? (
             <LoadingComponent key={index} />
@@ -98,7 +98,7 @@ const ChatPage: React.FC = () => {
           )
         )}
       </div>
-      <div className=" w-full p-4 shadow-sm">
+      <div className="container mx-auto w-full p-4 shadow-sm">
         <form onSubmit={handleForm}>
           <div className="relative">
             <input
