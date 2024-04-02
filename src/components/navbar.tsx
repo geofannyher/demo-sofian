@@ -17,7 +17,7 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div className="flex flex-col text-white">
-                  <h1 className="font-semibold">Lindy</h1>
+                  <h1 className="font-semibold">Erastus Sabdono</h1>
                   <h1 className="text-sm">Online</h1>
                 </div>
               </div>

@@ -59,7 +59,7 @@ const ChatPage: React.FC = () => {
 
     const res: any = await chatRes({
       message: input,
-      star: "demotsel2",
+      star: "pdteras",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-1106-preview",
     });
