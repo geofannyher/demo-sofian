@@ -1,11 +1,11 @@
 export const saveSession = (token: string) => {
-  localStorage.setItem("user", token);
+  localStorage.setItem("usermail", token);
 };
 
 export const getSession = () => {
-  return localStorage.getItem("user");
+  return localStorage.getItem("usermail");
 };
 
 export const clearSession = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem("usermail");
 };

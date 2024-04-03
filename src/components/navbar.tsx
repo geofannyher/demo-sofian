@@ -1,4 +1,5 @@
 import { FaCircle } from "react-icons/fa";
+import ai from "../assets/ai.jpg";
 const Navbar = () => {
   return (
     <div className="bg-mainColor rounded-bl-xl rounded-br-xl  shadow-md">
@@ -9,7 +10,7 @@ const Navbar = () => {
               <div className="flex items-center gap-2">
                 <div className="relative flex">
                   <img
-                    src={"https://picsum.photos/200/300"}
+                    src={ai}
                     className="h-10 w-10 items-center justify-center rounded-full object-cover"
                   />
                   <div className="absolute bottom-0 right-0 text-green-500">

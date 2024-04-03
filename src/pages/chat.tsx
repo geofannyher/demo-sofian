@@ -28,7 +28,7 @@ const ChatPage: React.FC = () => {
     setTimeout(() => {
       setMessages([
         {
-          text: "Halo !",
+          text: "Shalom, mari kita tumbuh bersama dalam memahami kebesaran dan kasih Allah kepada kita. Apakah saudara memiliki pertanyaan atau ingin mendalami lebih jauh tentang Kenosis, Logos, dan Monotheisme?",
           sender: "ai",
         },
       ]);
@@ -105,7 +105,7 @@ const ChatPage: React.FC = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="block w-full rounded-xl border border-gray-300 bg-gray-50 p-4 text-sm text-gray-900"
+              className="block w-full pr-20 rounded-xl border border-gray-300 bg-gray-50 p-4 text-sm text-gray-900"
               placeholder="Masukkan pesan anda.."
             />
             <button

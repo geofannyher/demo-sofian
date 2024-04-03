@@ -23,7 +23,7 @@ export default {
         mainColor: "#182551",
         secondColor: "#f5f7fc",
         thirdColor: "#ED0266",
-        hoverBtn: "#942234",
+        hoverBtn: "#101730",
         chatAi: "#e2e8e9",
       },
     },
