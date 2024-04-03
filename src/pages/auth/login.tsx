@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -8,7 +8,7 @@ const Login = () => {
   const [msg, setMsg] = useState(0);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [api, context] = notification.useNotification();
+  const [, context] = notification.useNotification();
   const navigate = useNavigate();
 
   const handleSubmit = async (event: any) => {

@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, useEffect, useRef } from "react";
 import { IoIosSend } from "react-icons/io";
 import notificationSound from "../assets/notif.mp3";
-import { notification } from "antd";
+import { message, notification } from "antd";
 import { IMessage } from "../utils/interface/chat.interface";
 import { chatRes, generateRandomString } from "../services/api/chat.services";
 import { AiChat, UserChat } from "../components/chat";
@@ -15,6 +15,8 @@ const ChatPage: React.FC = () => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const [showButton, setShowButton] = useState(false);
+
   const idUserSession = localStorage.getItem("iduser");
   const randomChar = async () => {
     if (idUserSession === null) {
@@ -34,9 +36,16 @@ const ChatPage: React.FC = () => {
       ]);
     }, 700);
   }, []);
-
   useEffect(() => {
     scrollToBottom();
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.sender == "ai") {
+        setShowButton(true);
+      }
+    } else {
+      setShowButton(false);
+    }
   }, [messages]);
 
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
@@ -76,6 +85,8 @@ const ChatPage: React.FC = () => {
     }
   };
 
+  console.log(messages);
+
   return (
     <div className="flex h-screen flex-col bg-white">
       <Navbar />
@@ -87,7 +98,6 @@ const ChatPage: React.FC = () => {
           ) : message?.sender === "user" ? (
             <div key={index}>
               <div ref={messagesEndRef} />
-
               <UserChat message={message?.text} />
             </div>
           ) : (
