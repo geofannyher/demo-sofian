@@ -14,11 +14,10 @@ const Login = () => {
   const handleSubmit = async (event: any) => {
     setLoading(true);
     event.preventDefault();
-    const email = import.meta.env.VITE_APP_EMAIL;
     const pass = import.meta.env.VITE_APP_PASS;
-    if (event?.target[0]?.value === email && event.target[1]?.value == pass) {
+    if (event.target[0]?.value == pass) {
       navigate("/chat");
-      localStorage.setItem("usermail", event?.target[0]?.value);
+      localStorage.setItem("usermail", "admin");
       setLoading(false);
     } else {
       setLoading(false);
@@ -34,21 +33,6 @@ const Login = () => {
       {context}
       {msg == 0 ? null : msg == 1 ? <AlertDanger /> : <AlertSuccess />}
       <form className="space-y-6" onSubmit={handleSubmit}>
-        <div>
-          <label className="block text-sm font-medium leading-6 text-main">
-            Email
-          </label>
-          <div className="mt-2">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="block w-full rounded-md border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-
         <div>
           <div className="flex items-center justify-between">
             <label className="block text-sm font-medium leading-6 text-main">
