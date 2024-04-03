@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, useEffect, useRef } from "react";
 import { IoIosSend } from "react-icons/io";
 import notificationSound from "../assets/notif.mp3";
-import { message, notification } from "antd";
+import { notification } from "antd";
 import { IMessage } from "../utils/interface/chat.interface";
 import { chatRes, generateRandomString } from "../services/api/chat.services";
 import { AiChat, UserChat } from "../components/chat";
@@ -15,7 +15,7 @@ const ChatPage: React.FC = () => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-  const [showButton, setShowButton] = useState(false);
+  // const [showButton, setShowButton] = useState(false);
 
   const idUserSession = localStorage.getItem("iduser");
   const randomChar = async () => {
@@ -38,14 +38,6 @@ const ChatPage: React.FC = () => {
   }, []);
   useEffect(() => {
     scrollToBottom();
-    if (messages.length > 0) {
-      const lastMessage = messages[messages.length - 1];
-      if (lastMessage.sender == "ai") {
-        setShowButton(true);
-      }
-    } else {
-      setShowButton(false);
-    }
   }, [messages]);
 
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
