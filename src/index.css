@@ -8,11 +8,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-.leaflet-container {
-  height: 50vh;
-  /* width: 100vw; */
-}
-
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

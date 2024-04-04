@@ -77,16 +77,17 @@ const ChatPage: React.FC = () => {
     }
   };
 
-  console.log(messages);
-
   return (
-    <div className="flex h-screen flex-col bg-white">
+    <div className="flex h-[93vh] lg:h-screen md:h-screen flex-col bg-white">
       <Navbar />
       {context}
-      <div className="hide-scrollbar container mx-auto flex-grow space-y-2 overflow-y-auto p-4 ">
+      <div className="hide-scrollbar container mx-auto flex-1 space-y-2 overflow-y-auto p-4 ">
         {messages.map((message, index) =>
           message?.isLoading ? (
-            <LoadingComponent key={index} />
+            <>
+              <LoadingComponent key={index} />
+              <div ref={messagesEndRef} />
+            </>
           ) : message?.sender === "user" ? (
             <div key={index}>
               <div ref={messagesEndRef} />
@@ -100,7 +101,7 @@ const ChatPage: React.FC = () => {
           )
         )}
       </div>
-      <div className="container mx-auto w-full p-4 shadow-sm">
+      <div className=" container mx-auto w-full p-4 shadow-sm">
         <form onSubmit={handleForm}>
           <div className="relative">
             <input
