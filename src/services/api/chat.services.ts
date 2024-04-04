@@ -9,6 +9,7 @@ export const chatRes = async ({ message, star, model, id }: TChatDataProps) => {
       temperature: 1,
       id,
       message: message,
+      chat_limit: 2,
     });
     return response;
   } catch (error) {
