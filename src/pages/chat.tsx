@@ -13,9 +13,17 @@ const ChatPage: React.FC = () => {
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
   const [api, context] = notification.useNotification();
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+      if (
+        "scrollBehavior" in document.documentElement.style &&
+        window.innerWidth > 768
+      ) {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+      } else {
+        messagesEndRef.current.scrollIntoView();
+      }
+    }
   };
-  // const [showButton, setShowButton] = useState(false);
 
   const idUserSession = localStorage.getItem("iduser");
   const randomChar = async () => {
@@ -90,7 +98,6 @@ const ChatPage: React.FC = () => {
             </>
           ) : message?.sender === "user" ? (
             <div key={index}>
-              <div ref={messagesEndRef} />
               <UserChat message={message?.text} />
             </div>
           ) : (
