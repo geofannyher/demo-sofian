@@ -20,13 +20,9 @@ const Navbar = () => {
                     src={ai}
                     className="h-10 w-10 items-center justify-center rounded-full object-cover"
                   />
-                  <div className="absolute bottom-0 right-0 text-green-500">
-                    <FaCircle size={10} className="pulse-animation" />
-                  </div>
                 </div>
                 <div className="flex flex-col text-white">
                   <h1 className="font-semibold">Erastus Sabdono</h1>
-                  <h1 className="text-sm">Online</h1>
                 </div>
               </div>
             </div>
