@@ -68,13 +68,13 @@ const ChatPage: React.FC = () => {
 
     const res: any = await chatRes({
       message: input,
-      star: "pdteras",
+      star: "ubahtanya",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-1106-preview",
     });
     const resNew: any = await chatRes({
       message: res?.data?.data,
-      star: "ubahtanya",
+      star: "pdteras",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-1106-preview",
     });
