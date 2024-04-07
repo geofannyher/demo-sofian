@@ -1,4 +1,3 @@
-import { FaCircle } from "react-icons/fa";
 import ai from "../assets/ai.jpg";
 import { clearSession } from "../shared/Session";
 import { useNavigate } from "react-router-dom";
