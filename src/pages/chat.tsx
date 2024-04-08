@@ -7,11 +7,13 @@ import { chatRes, generateRandomString } from "../services/api/chat.services";
 import { AiChat, UserChat } from "../components/chat";
 import LoadingComponent from "../components/loader";
 import Navbar from "../components/navbar";
+import { textToSpeech } from "../services/api/elevenlabs.service";
 const ChatPage: React.FC = () => {
   const [input, setInput] = useState<string>("");
   const [messages, setMessages] = useState<IMessage[]>([]);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
   const [api, context] = notification.useNotification();
+  const [audioUrl, setaudioUrl] = useState<Blob>();
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       if (
@@ -48,13 +50,12 @@ const ChatPage: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
-  const handleForm = async (event: FormEvent<HTMLFormElement>) => {
+  const handleForm = async (event: any) => {
     event.preventDefault();
-
-    if (!input) {
+    if (!event?.target[0]?.value) {
       return api.error({ message: "Kolom pesan tidak boleh kosong" });
     }
-    const userMessage = { text: input, sender: "user" };
+    const userMessage = { text: event?.target[0]?.value, sender: "user" };
     const loadingMessage = { isLoading: true };
 
     setMessages((prevMessages: any) => [
@@ -67,7 +68,7 @@ const ChatPage: React.FC = () => {
     audio.play();
 
     const res: any = await chatRes({
-      message: input,
+      message: event?.target[0]?.value,
       star: "ubahtanya",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-1106-preview",
@@ -108,7 +109,10 @@ const ChatPage: React.FC = () => {
             </div>
           ) : (
             <div key={index}>
-              <AiChat message={message?.text} />
+              <AiChat
+                message={message?.text}
+                isLastAIChat={index === messages.length - 1}
+              />
               <div ref={messagesEndRef} />
             </div>
           )
@@ -119,8 +123,8 @@ const ChatPage: React.FC = () => {
           <div className="relative">
             <input
               type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
+              id="message"
+              name="message"
               className="block w-full pr-20 rounded-xl border border-gray-300 bg-gray-50 p-4 text-sm text-gray-900"
               placeholder="Masukkan pesan anda.."
             />
