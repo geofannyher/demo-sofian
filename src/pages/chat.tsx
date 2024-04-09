@@ -71,7 +71,7 @@ const ChatPage: React.FC = () => {
       message: event?.target[0]?.value,
       star: "ubahtanya",
       id: idUserSession ? idUserSession : "",
-      model: "gpt-4-1106-preview",
+      model: "gpt-4-turbo-preview",
     });
     // const resNew: any = await chatRes({
     //   message: res?.data?.data,
