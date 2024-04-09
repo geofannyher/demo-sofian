@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { IoIosSend } from "react-icons/io";
 import notificationSound from "../assets/notif.mp3";
 import { notification } from "antd";
