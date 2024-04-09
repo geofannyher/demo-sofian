@@ -68,6 +68,8 @@ const ChatPage: React.FC = () => {
     const audio = new Audio(notificationSound);
     audio.play();
 
+    console.log(event?.target[0]?.value, "ini input");
+
     const res: any = await chatRes({
       message: event?.target[0]?.value,
       // star: "ubahtanya",
@@ -79,7 +81,7 @@ const ChatPage: React.FC = () => {
     //   message: res?.data?.data,
     //   star: "pdteras",
     //   id: idUserSession ? idUserSession : "",
-    //   model: "gpt-4-1106-preview",
+    //   model: "gpt-4-turbo-preview",
     // });
 
     if (res && res?.data?.data) {
