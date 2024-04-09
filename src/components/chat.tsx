@@ -6,15 +6,17 @@ import { textToSpeech } from "../services/api/elevenlabs.service";
 import { useEffect, useState } from "react";
 export const AiChat = ({ message, isLastAIChat }: TChatProps) => {
   const [audioSrc, setAudioSrc] = useState("");
+  const [status, setStatus] = useState(false);
 
   useEffect(() => {
-    // Definisikan fungsi async untuk memanggil textToSpeech
     const fetchTextToSpeech = async () => {
       try {
-        const result: any = await textToSpeech(message); // Panggil fungsi textToSpeech dengan teks pesan
-        const audioBlob = new Blob([result.data], { type: "audio/mpeg" }); // Buat blob audio dari respons API
-        const audioUrl = URL.createObjectURL(audioBlob); // Buat URL untuk blob audio
-        setAudioSrc(audioUrl); // Set sumber audio ke URL yang dibuat
+        setStatus(true);
+        const result: any = await textToSpeech(message);
+        const audioBlob = new Blob([result.data], { type: "audio/mpeg" });
+        const audioUrl = URL.createObjectURL(audioBlob);
+        setAudioSrc(audioUrl);
+        setStatus(false);
       } catch (error) {
         console.error("Failed to convert text to speech:", error);
       }
@@ -47,12 +49,14 @@ export const AiChat = ({ message, isLastAIChat }: TChatProps) => {
             >
               {message}
             </Markdown>
-            {isLastAIChat && (
-              <audio controls>
-                <source src={audioSrc} type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-            )}
+            {status
+              ? "Loading Audio..."
+              : isLastAIChat && (
+                  <audio controls>
+                    <source src={audioSrc} type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                  </audio>
+                )}
           </div>
         </div>
       </div>
