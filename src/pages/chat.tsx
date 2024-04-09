@@ -73,18 +73,18 @@ const ChatPage: React.FC = () => {
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-1106-preview",
     });
-    const resNew: any = await chatRes({
-      message: res?.data?.data,
-      star: "pdteras",
-      id: idUserSession ? idUserSession : "",
-      model: "gpt-4-1106-preview",
-    });
+    // const resNew: any = await chatRes({
+    //   message: res?.data?.data,
+    //   star: "pdteras",
+    //   id: idUserSession ? idUserSession : "",
+    //   model: "gpt-4-1106-preview",
+    // });
 
-    if (resNew && resNew?.data?.data) {
+    if (res && res?.data?.data) {
       setMessages((prevMessages: any) => {
         return [
           ...prevMessages.filter((m: any) => !m.isLoading),
-          { text: resNew?.data?.data || "AI tidak merespon", sender: "ai" },
+          { text: res?.data?.data || "AI tidak merespon", sender: "ai" },
         ];
       });
       const audio = new Audio(notificationSound);
