@@ -25,7 +25,6 @@ export const AiChat = ({ message, isLastAIChat }: TChatProps) => {
       fetchTextToSpeech();
     }
   }, [message, isLastAIChat, audioSrc]);
-  console.log(isLastAIChat);
   return (
     <div className="flex justify-start py-2">
       <div className="flex items-start">

@@ -27,10 +27,10 @@ export const chatResNew = async ({
     const response = await axios.post(`${import.meta.env.VITE_APP_CHATT}chat`, {
       star: star,
       model: model,
-      temperature: 0.7,
+      temperature: 0,
       id,
       message: message,
-      chat_limit: 2,
+      chat_limit: 0,
     });
     return response;
   } catch (error) {

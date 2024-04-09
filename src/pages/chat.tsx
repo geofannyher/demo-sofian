@@ -3,13 +3,16 @@ import { IoIosSend } from "react-icons/io";
 import notificationSound from "../assets/notif.mp3";
 import { notification } from "antd";
 import { IMessage } from "../utils/interface/chat.interface";
-import { chatRes, generateRandomString } from "../services/api/chat.services";
+import {
+  chatRes,
+  chatResNew,
+  generateRandomString,
+} from "../services/api/chat.services";
 import { AiChat, UserChat } from "../components/chat";
 import LoadingComponent from "../components/loader";
 import Navbar from "../components/navbar";
 // import { textToSpeech } from "../services/api/elevenlabs.service";
 const ChatPage: React.FC = () => {
-  const [, setInput] = useState<string>("");
   const [messages, setMessages] = useState<IMessage[]>([]);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
   const [api, context] = notification.useNotification();
@@ -63,37 +66,37 @@ const ChatPage: React.FC = () => {
       userMessage,
       loadingMessage,
     ]);
-    setInput("");
 
     const audio = new Audio(notificationSound);
     audio.play();
 
-    console.log(event?.target[0]?.value, "ini input");
-
-    const res: any = await chatRes({
-      message: event?.target[0]?.value,
-      // star: "ubahtanya",
-      star: "pdteras",
-      id: idUserSession ? idUserSession : "",
-      model: "gpt-4-turbo-preview",
-    });
-    // const resNew: any = await chatRes({
-    //   message: res?.data?.data,
-    //   star: "pdteras",
+    // const res: any = await chatRes({
+    //   message: event?.target[0]?.value,
+    //   star: "ubahtanya",
     //   id: idUserSession ? idUserSession : "",
     //   model: "gpt-4-turbo-preview",
     // });
 
-    if (res && res?.data?.data) {
+    // console.log(res?.data?.data, "ini ubah tanya");
+    const resNew: any = await chatResNew({
+      message: event?.target[0]?.value,
+      star: "pdteras",
+      id: idUserSession ? idUserSession : "",
+      model: "gpt-4-turbo-preview",
+    });
+    console.log(resNew?.data?.data, "ini hasil");
+
+    if (resNew && resNew?.data?.data) {
       setMessages((prevMessages: any) => {
         return [
           ...prevMessages.filter((m: any) => !m.isLoading),
-          { text: res?.data?.data || "AI tidak merespon", sender: "ai" },
+          { text: resNew?.data?.data || "AI tidak merespon", sender: "ai" },
         ];
       });
       const audio = new Audio(notificationSound);
       audio.play();
     }
+    event.target[0].value = "";
   };
 
   return (
