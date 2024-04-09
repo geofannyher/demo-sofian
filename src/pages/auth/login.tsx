@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { notification } from "antd";
 import { AlertDanger, AlertSuccess } from "../../components/notification";
+import { generateRandomString } from "../../services/api/chat.services";
 const Login = () => {
   const [msg, setMsg] = useState(0);
   const [show, setShow] = useState(false);
@@ -17,7 +18,8 @@ const Login = () => {
     const pass = import.meta.env.VITE_APP_PASS;
     if (event.target[0]?.value == pass) {
       navigate("/chat");
-      localStorage.setItem("usermail", "admin");
+      const idUser = await generateRandomString();
+      localStorage.setItem("idPendeta", idUser);
       setLoading(false);
     } else {
       setLoading(false);

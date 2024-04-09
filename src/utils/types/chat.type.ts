@@ -9,3 +9,8 @@ export type TChatDataProps = {
   message: string;
   id: string;
 };
+
+export type TResetChat = {
+  star: string;
+  id: any;
+};

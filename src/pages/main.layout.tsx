@@ -11,10 +11,6 @@ const MainLayout = () => {
 
   useEffect(() => {
     if (!token && !landing) {
-      const openNotification = () => {
-        notification.error({ message: "Sorry, you have to login first!" });
-      };
-      openNotification();
       navigate("/");
     }
   }, [token, landing, api, navigate]);

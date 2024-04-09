@@ -4,7 +4,7 @@ import notificationSound from "../assets/notif.mp3";
 import { notification } from "antd";
 import { IMessage } from "../utils/interface/chat.interface";
 import {
-  // chatRes,
+  chatRes,
   chatResNew,
   generateRandomString,
 } from "../services/api/chat.services";
@@ -30,11 +30,11 @@ const ChatPage: React.FC = () => {
     }
   };
 
-  const idUserSession = localStorage.getItem("iduser");
+  const idUserSession = localStorage.getItem("idPendeta");
   const randomChar = async () => {
     if (idUserSession === null) {
       const res = await generateRandomString();
-      localStorage.setItem("iduser", res);
+      localStorage.setItem("idPendeta", res);
     }
   };
 
@@ -55,10 +55,13 @@ const ChatPage: React.FC = () => {
 
   const handleForm = async (event: any) => {
     event.preventDefault();
-    if (!event?.target[0]?.value) {
+    const messageInput = event?.target[0]?.value.trim();
+    event.target[0].value = "";
+
+    if (!messageInput) {
       return api.error({ message: "Kolom pesan tidak boleh kosong" });
     }
-    const userMessage = { text: event?.target[0]?.value, sender: "user" };
+    const userMessage = { text: messageInput, sender: "user" };
     const loadingMessage = { isLoading: true };
 
     setMessages((prevMessages: any) => [
@@ -70,21 +73,19 @@ const ChatPage: React.FC = () => {
     const audio = new Audio(notificationSound);
     audio.play();
 
-    // const res: any = await chatRes({
-    //   message: event?.target[0]?.value,
-    //   star: "ubahtanya",
-    //   id: idUserSession ? idUserSession : "",
-    //   model: "gpt-4-turbo-preview",
-    // });
+    const res: any = await chatRes({
+      message: messageInput,
+      star: "ubahtanya",
+      id: idUserSession ? idUserSession : "",
+      model: "gpt-4-turbo-preview",
+    });
 
-    // console.log(res?.data?.data, "ini ubah tanya");
     const resNew: any = await chatResNew({
-      message: event?.target[0]?.value,
+      message: res?.data?.data,
       star: "pdteras",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-turbo-preview",
     });
-    console.log(resNew?.data?.data, "ini hasil");
 
     if (resNew && resNew?.data?.data) {
       setMessages((prevMessages: any) => {
@@ -96,7 +97,6 @@ const ChatPage: React.FC = () => {
       const audio = new Audio(notificationSound);
       audio.play();
     }
-    event.target[0].value = "";
   };
 
   return (

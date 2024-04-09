@@ -3,7 +3,7 @@ import { clearSession } from "../shared/Session";
 import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
-  const handleLogout = () => {
+  const handleLogout = async () => {
     clearSession();
     navigate("/");
   };

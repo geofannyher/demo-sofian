@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TChatDataProps } from "../../utils/types/chat.type";
+import { TChatDataProps, TResetChat } from "../../utils/types/chat.type";
 
 export const chatRes = async ({ message, star, model, id }: TChatDataProps) => {
   try {
@@ -9,7 +9,7 @@ export const chatRes = async ({ message, star, model, id }: TChatDataProps) => {
       temperature: 0,
       id,
       message: message,
-      chat_limit: 1,
+      chat_limit: 0,
     });
     return response;
   } catch (error) {
@@ -47,4 +47,16 @@ export const generateRandomString = async () => {
     result += charset[randomIndex];
   }
   return result;
+};
+
+export const resetStarId = async ({ id, star }: TResetChat) => {
+  try {
+    const res = await axios.post(`${import.meta.env.VITE_APP_CHATT}reset`, {
+      id,
+      star,
+    });
+    return res;
+  } catch (error) {
+    return error;
+  }
 };
