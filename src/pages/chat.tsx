@@ -7,13 +7,13 @@ import { chatRes, generateRandomString } from "../services/api/chat.services";
 import { AiChat, UserChat } from "../components/chat";
 import LoadingComponent from "../components/loader";
 import Navbar from "../components/navbar";
-import { textToSpeech } from "../services/api/elevenlabs.service";
+// import { textToSpeech } from "../services/api/elevenlabs.service";
 const ChatPage: React.FC = () => {
-  const [input, setInput] = useState<string>("");
+  const [, setInput] = useState<string>("");
   const [messages, setMessages] = useState<IMessage[]>([]);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
   const [api, context] = notification.useNotification();
-  const [audioUrl, setaudioUrl] = useState<Blob>();
+  // const [audioUrl, setaudioUrl] = useState<Blob>();
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       if (
