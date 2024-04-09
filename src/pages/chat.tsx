@@ -64,6 +64,7 @@ const ChatPage: React.FC = () => {
       loadingMessage,
     ]);
     setInput("");
+
     const audio = new Audio(notificationSound);
     audio.play();
 
