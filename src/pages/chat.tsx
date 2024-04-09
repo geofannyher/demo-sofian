@@ -70,7 +70,8 @@ const ChatPage: React.FC = () => {
 
     const res: any = await chatRes({
       message: event?.target[0]?.value,
-      star: "ubahtanya",
+      // star: "ubahtanya",
+      star: "pdteras",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-turbo-preview",
     });
