@@ -3,6 +3,7 @@ import ChatPage from "./pages/chat";
 import AuthLayout from "./pages/auth/authlayout";
 import Login from "./pages/auth/login";
 import MainLayout from "./pages/main.layout";
+import AdminLayout from "./pages/admin/admin.layout";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         </Route>
         <Route path="/" element={<MainLayout />}>
           <Route path="chat" element={<ChatPage />} />
+          <Route path="adminavatara" element={<AdminLayout />} />
         </Route>
       </Routes>
     </BrowserRouter>

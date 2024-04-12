@@ -38,6 +38,17 @@ const ChatPage: React.FC = () => {
     }
   };
 
+  const getRandomID = async () => {
+    const idUser = await generateRandomString();
+    localStorage.setItem("idPendeta", idUser);
+  };
+  const checkAIResponse = async () => {
+    const aiMessages = messages.filter((message) => message.sender === "ai");
+    if (aiMessages.length > 2) {
+      getRandomID();
+    }
+  };
+
   useEffect(() => {
     randomChar();
     setTimeout(() => {
@@ -50,6 +61,7 @@ const ChatPage: React.FC = () => {
     }, 700);
   }, []);
   useEffect(() => {
+    checkAIResponse();
     scrollToBottom();
   }, [messages]);
 
