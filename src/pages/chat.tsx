@@ -11,6 +11,7 @@ import {
 import { AiChat, UserChat } from "../components/chat";
 import LoadingComponent from "../components/loader";
 import Navbar from "../components/navbar";
+import { supabase } from "../services/supabase/connection";
 // import { textToSpeech } from "../services/api/elevenlabs.service";
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
