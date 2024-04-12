@@ -54,7 +54,7 @@ const DashboardAdmin = () => {
       <div className="grid grid-cols-12 py-10">
         <div className="col-span-3"></div>
         <div className="col-span-8 border-2 rounded-md p-4">
-          <h1 className="font-semibold">Audio Settings</h1>
+          <h1 className="font-semibold">Audio Setting</h1>
           <div className="text-sm py-2 flex items-center justify-between">
             <h1>{switchValue ? "Audio On" : "Audio Off"}</h1>
             <button
