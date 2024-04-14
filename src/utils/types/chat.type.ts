@@ -6,6 +6,7 @@ export type TChatProps = {
 export type TChatDataProps = {
   star: string;
   model: string;
+  is_rag: string;
   message: string;
   id: string;
 };

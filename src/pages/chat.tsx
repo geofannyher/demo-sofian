@@ -90,6 +90,7 @@ const ChatPage: React.FC = () => {
       star: "ubahtanya",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-turbo-preview",
+      is_rag: "true",
     });
 
     const resNew: any = await chatResNew({
@@ -97,6 +98,7 @@ const ChatPage: React.FC = () => {
       star: "pdteras",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-turbo-preview",
+      is_rag: "true",
     });
 
     if (resNew && resNew?.data?.data) {

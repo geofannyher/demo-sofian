@@ -1,7 +1,13 @@
 import axios from "axios";
 import { TChatDataProps, TResetChat } from "../../utils/types/chat.type";
 
-export const chatRes = async ({ message, star, model, id }: TChatDataProps) => {
+export const chatRes = async ({
+  message,
+  star,
+  model,
+  id,
+  is_rag,
+}: TChatDataProps) => {
   try {
     const response = await axios.post(`${import.meta.env.VITE_APP_CHATT}chat`, {
       star: star,
@@ -10,6 +16,7 @@ export const chatRes = async ({ message, star, model, id }: TChatDataProps) => {
       id,
       message: message,
       chat_limit: 0,
+      is_rag,
     });
     return response;
   } catch (error) {
@@ -22,6 +29,7 @@ export const chatResNew = async ({
   star,
   model,
   id,
+  is_rag,
 }: TChatDataProps) => {
   try {
     const response = await axios.post(`${import.meta.env.VITE_APP_CHATT}chat`, {
@@ -31,6 +39,7 @@ export const chatResNew = async ({
       id,
       message: message,
       chat_limit: 1,
+      is_rag,
     });
     return response;
   } catch (error) {
