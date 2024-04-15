@@ -4,7 +4,7 @@ import notificationSound from "../assets/notif.mp3";
 import { notification } from "antd";
 import { IMessage } from "../utils/interface/chat.interface";
 import {
-  chatRes,
+  // chatRes,
   chatResNew,
   generateRandomString,
 } from "../services/api/chat.services";
