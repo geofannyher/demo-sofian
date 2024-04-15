@@ -29,7 +29,6 @@ export const chatResNew = async ({
   star,
   model,
   id,
-  is_rag,
 }: TChatDataProps) => {
   try {
     const response = await axios.post(`${import.meta.env.VITE_APP_CHATT}chat`, {
@@ -39,7 +38,6 @@ export const chatResNew = async ({
       id,
       message: message,
       chat_limit: 1,
-      is_rag,
     });
     return response;
   } catch (error) {
