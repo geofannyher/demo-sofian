@@ -85,19 +85,21 @@ const ChatPage: React.FC = () => {
     const audio = new Audio(notificationSound);
     audio.play();
 
-    const res: any = await chatRes({
-      message: messageInput,
-      star: "ubahtanya",
-      id: idUserSession ? idUserSession : "",
-      model: "gpt-4-turbo-preview",
-      is_rag: "true",
-    });
+    // const res: any = await chatRes({
+    //   message: messageInput,
+    //   star: "ubahtanya",
+    //   id: idUserSession ? idUserSession : "",
+    //   model: "gpt-4-turbo-preview",
+    //   is_rag: "true",
+    // });
 
     const resNew: any = await chatResNew({
-      message: res?.data?.data,
+      // message: res?.data?.data,
+      message: messageInput,
       star: "pdteras",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-turbo-preview",
+      is_rag: "true",
     });
 
     if (resNew && resNew?.data?.data) {
