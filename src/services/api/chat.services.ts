@@ -35,7 +35,7 @@ export const chatResNew = async ({
     const response = await axios.post(`${import.meta.env.VITE_APP_CHATT}chat`, {
       star: star,
       model: model,
-      temperature: 0,
+      temperature: 0.7,
       id,
       message: message,
       chat_limit: 1,
