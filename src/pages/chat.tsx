@@ -38,16 +38,16 @@ const ChatPage: React.FC = () => {
     }
   };
 
-  const getRandomID = async () => {
-    const idUser = await generateRandomString();
-    localStorage.setItem("idPendeta", idUser);
-  };
-  const checkAIResponse = async () => {
-    const aiMessages = messages.filter((message) => message.sender === "ai");
-    if (aiMessages.length > 2) {
-      getRandomID();
-    }
-  };
+  // const getRandomID = async () => {
+  //   const idUser = await generateRandomString();
+  //   localStorage.setItem("idPendeta", idUser);
+  // };
+  // const checkAIResponse = async () => {
+  //   const aiMessages = messages.filter((message) => message.sender === "ai");
+  //   if (aiMessages.length > 2) {
+  //     getRandomID();
+  //   }
+  // };
 
   useEffect(() => {
     randomChar();
@@ -61,7 +61,7 @@ const ChatPage: React.FC = () => {
     }, 700);
   }, []);
   useEffect(() => {
-    checkAIResponse();
+    // checkAIResponse();
     scrollToBottom();
   }, [messages]);
 
@@ -99,7 +99,7 @@ const ChatPage: React.FC = () => {
       star: "pdteras",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-turbo-preview",
-      is_rag: "true",
+      is_rag: "false",
     });
 
     if (resNew && resNew?.data?.data) {
