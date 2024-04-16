@@ -38,7 +38,7 @@ export const chatResNew = async ({
       temperature: 0.7,
       id,
       message: message,
-      chat_limit: 5,
+      chat_limit: 1,
       is_rag,
     });
     return response;
