@@ -19,7 +19,7 @@ const Login = () => {
     if (event.target[0]?.value == pass) {
       navigate("/chat");
       const idUser = await generateRandomString();
-      localStorage.setItem("idPendeta", idUser);
+      localStorage.setItem("ids", idUser);
       setLoading(false);
     } else {
       setLoading(false);

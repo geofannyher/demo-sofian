@@ -4,19 +4,17 @@ import notificationSound from "../assets/notif.mp3";
 import { notification } from "antd";
 import { IMessage } from "../utils/interface/chat.interface";
 import {
-  // chatRes,
   chatResNew,
   generateRandomString,
 } from "../services/api/chat.services";
 import { AiChat, UserChat } from "../components/chat";
 import LoadingComponent from "../components/loader";
 import Navbar from "../components/navbar";
-// import { textToSpeech } from "../services/api/elevenlabs.service";
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
   const [api, context] = notification.useNotification();
-  // const [audioUrl, setaudioUrl] = useState<Blob>();
+
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       if (
@@ -30,38 +28,26 @@ const ChatPage: React.FC = () => {
     }
   };
 
-  const idUserSession = localStorage.getItem("idPendeta");
+  const idUserSession = localStorage.getItem("ids");
   const randomChar = async () => {
     if (idUserSession === null) {
       const res = await generateRandomString();
-      localStorage.setItem("idPendeta", res);
+      localStorage.setItem("ids", res);
     }
   };
-
-  // const getRandomID = async () => {
-  //   const idUser = await generateRandomString();
-  //   localStorage.setItem("idPendeta", idUser);
-  // };
-  // const checkAIResponse = async () => {
-  //   const aiMessages = messages.filter((message) => message.sender === "ai");
-  //   if (aiMessages.length > 2) {
-  //     getRandomID();
-  //   }
-  // };
 
   useEffect(() => {
     randomChar();
     setTimeout(() => {
       setMessages([
         {
-          text: "Shalom, mari kita tumbuh bersama dalam memahami kebesaran dan kasih Allah kepada kita. Apakah saudara memiliki pertanyaan atau ingin mendalami lebih jauh tentang Kenosis, Logos, dan Monotheisme?",
+          text: "Hai! Udah pusing mikirin codingan? Ga perlu khawatir, gue bisa bantu ngajarin programming lo nih. Jadi, apa yang bisa gue bantuin?",
           sender: "ai",
         },
       ]);
     }, 700);
   }, []);
   useEffect(() => {
-    // checkAIResponse();
     scrollToBottom();
   }, [messages]);
 
@@ -85,18 +71,10 @@ const ChatPage: React.FC = () => {
     const audio = new Audio(notificationSound);
     audio.play();
 
-    // const res: any = await chatRes({
-    //   message: messageInput,
-    //   star: "ubahtanya",
-    //   id: idUserSession ? idUserSession : "",
-    //   model: "gpt-4-turbo-preview",
-    //   is_rag: "true",
-    // });
-
     const resNew: any = await chatResNew({
       // message: res?.data?.data,
       message: messageInput,
-      star: "pdteras",
+      star: "sofianhw",
       id: idUserSession ? idUserSession : "",
       model: "gpt-4-turbo-preview",
       is_rag: "false",
@@ -115,7 +93,7 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className="flex h-[93vh] lg:h-screen md:h-screen flex-col bg-white">
+    <div className="flex h-[100dvh] flex-col bg-white">
       <Navbar />
       {context}
       <div className="hide-scrollbar container mx-auto flex-1 space-y-2 overflow-y-auto p-4 ">
@@ -131,10 +109,7 @@ const ChatPage: React.FC = () => {
             </div>
           ) : (
             <div key={index}>
-              <AiChat
-                message={message?.text}
-                isLastAIChat={index === messages.length - 1}
-              />
+              <AiChat message={message?.text} />
               <div ref={messagesEndRef} />
             </div>
           )
